@@ -8,9 +8,9 @@ function toggleManual() {
 function hitungTotal() {
   const hargaDasar = parseInt(document.getElementById("jenis").value);
   const jumlah = parseInt(document.getElementById("jumlah").value);
-  const pembayaran = document.getElementById("pembayaran").value;
   const ukuran = document.getElementById("ukuran").value;
   const ukuranManual = document.getElementById("ukuranManual").value || "";
+  const pembayaran = document.getElementById("pembayaran").value;
 
   let tambahan = 0;
   let ukuranTampil = ukuran;
@@ -23,29 +23,30 @@ function hitungTotal() {
     }
   }
 
-  const total = (hargaDasar + tambahan) * jumlah;
+  const hargaFinal = hargaDasar + tambahan;
+  const total = hargaFinal * jumlah;
+
+  document.getElementById("ringkasan").innerText =
+    `Ukuran: ${ukuranTampil}\nHarga: Rp ${hargaFinal.toLocaleString()} x ${jumlah}`;
 
   document.getElementById("total").innerText =
     "Total: Rp " + total.toLocaleString();
 
-  document.getElementById("ringkasan").innerText =
-    `Ukuran: ${ukuranTampil}\nHarga: Rp ${(hargaDasar + tambahan).toLocaleString()} x ${jumlah}`;
-
   document.getElementById("paymentInfo").innerText =
     pembayaran === "DANA"
-      ? "DANA: 0821-6235-0017 (I Putu Sandhika Desta Wardhana)"
-      : "COD – Bayar di tempat";
+      ? "Pembayaran DANA: 0821-6235-0017 (I Putu Sandhika Desta Wardahana)"
+      : "Pembayaran COD (Bayar di tempat)";
 }
 
 function kirimWA() {
   const nama = document.getElementById("nama").value;
   const alamat = document.getElementById("alamat").value;
-  const pembayaran = document.getElementById("pembayaran").value;
   const ringkasan = document.getElementById("ringkasan").innerText;
   const total = document.getElementById("total").innerText;
+  const pembayaran = document.getElementById("pembayaran").value;
 
   if (!nama || !alamat) {
-    alert("Nama dan alamat wajib diisi");
+    alert("Nama dan alamat wajib diisi!");
     return;
   }
 
