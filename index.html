@@ -2,28 +2,19 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pemesanan Baju Bali Bonex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <h1>Pemesanan Baju Bali Bonex</h1>
 
-      <h2>Desain Baju</h2>
       <div class="images">
-        <img src="desain-baju-1.jpg" />
-        <img src="desain-baju-2.jpg" />
-      </div>
-
-      <h2>Size Chart Dewasa</h2>
-      <div class="images">
-        <img src="size-chart-dewasa.jpg" />
-      </div>
-
-      <h2>Size Chart Anak-anak</h2>
-      <div class="images">
-        <img src="size-chart-anak.jpg" />
+        <img src="desain-baju-1.jpg" alt="Desain Baju 1" />
+        <img src="desain-baju-2.jpg" alt="Desain Baju 2" />
+        <img src="size-chart-dewasa.jpg" alt="Size Chart Dewasa" />
+        <img src="size-chart-anak.jpg" alt="Size Chart Anak" />
       </div>
 
       <label>Nama Lengkap</label>
@@ -37,18 +28,25 @@
         <option value="95000">Dewasa Pendek - 95K</option>
         <option value="90000">Dewasa Singlet - 90K</option>
         <option value="105000">Dewasa Panjang - 105K</option>
-        <option value="75000">Anak-anak Pendek - 75K</option>
-        <option value="85000">Anak-anak Panjang - 85K</option>
+        <option value="75000">Anak Pendek - 75K</option>
+        <option value="85000">Anak Panjang - 85K</option>
       </select>
 
       <label>Ukuran</label>
-      <select id="ukuran" onchange="hitungTotal()">
+      <select id="ukuran">
         <option>S</option>
         <option>M</option>
         <option>L</option>
         <option>XL</option>
-        <option>Lain-lain (+5K)</option>
+        <option>Lain-lain</option>
       </select>
+
+      <input
+        type="text"
+        id="ukuranManual"
+        placeholder="Isi manual (XXXXXL dll)"
+      />
+      <small>* Jika isi manual + Rp 5.000 per pcs</small>
 
       <label>Jumlah</label>
       <input
@@ -58,6 +56,16 @@
         min="1"
         onchange="hitungTotal()"
       />
+
+      <label>Metode Pembayaran</label>
+      <select id="pembayaran" onchange="hitungTotal()">
+        <option value="COD">COD (Bayar di Tempat)</option>
+        <option value="Transfer BCA">Transfer BCA</option>
+        <option value="Transfer BRI">Transfer BRI</option>
+        <option value="Dana">Dana</option>
+      </select>
+
+      <div class="payment-info" id="paymentInfo"></div>
 
       <div class="summary">
         <h2>Ringkasan Pesanan</h2>
