@@ -1,83 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Pemesanan Baju Bali Bonex</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Pemesanan Baju Bali Bonex</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Pemesanan Baju Bali Bonex</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-      <div class="images">
-        <img src="desain-baju-1.jpg" alt="Desain Baju 1" />
-        <img src="desain-baju-2.jpg" alt="Desain Baju 2" />
-        <img src="size-chart-dewasa.jpg" alt="Size Chart Dewasa" />
-        <img src="size-chart-anak.jpg" alt="Size Chart Anak" />
-      </div>
+<div class="container">
+  <h1>Pemesanan Baju Bali Bonex</h1>
 
-      <label>Nama Lengkap</label>
-      <input type="text" id="nama" />
+  <div class="images">
+    <img src="desain-baju-1.jpg" alt="Desain Baju 1">
+    <img src="desain-baju-2.jpg" alt="Desain Baju 2">
+    <img src="size-chart-dewasa.jpg" alt="Size Chart Dewasa">
+    <img src="size-chart-anak.jpg" alt="Size Chart Anak">
+  </div>
 
-      <label>Alamat Lengkap</label>
-      <textarea id="alamat"></textarea>
+  <label>Nama Lengkap</label>
+  <input type="text" id="nama">
 
-      <label>Jenis Baju</label>
-      <select id="jenis" onchange="hitungTotal()">
-        <option value="95000">Dewasa Pendek - 95K</option>
-        <option value="90000">Dewasa Singlet - 90K</option>
-        <option value="105000">Dewasa Panjang - 105K</option>
-        <option value="75000">Anak Pendek - 75K</option>
-        <option value="85000">Anak Panjang - 85K</option>
-      </select>
+  <label>Alamat Lengkap</label>
+  <textarea id="alamat"></textarea>
 
-      <label>Ukuran</label>
-      <select id="ukuran">
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-        <option>Lain-lain</option>
-      </select>
+  <label>Jenis Baju</label>
+  <select id="jenis" onchange="hitungTotal()">
+    <option value="95000">Dewasa Pendek - 95K</option>
+    <option value="90000">Dewasa Singlet - 90K</option>
+    <option value="105000">Dewasa Panjang - 105K</option>
+    <option value="75000">Anak Pendek - 75K</option>
+    <option value="85000">Anak Panjang - 85K</option>
+  </select>
 
-      <input
-        type="text"
-        id="ukuranManual"
-        placeholder="Isi manual (XXXXXL dll)"
-      />
-      <small>* Jika isi manual + Rp 5.000 per pcs</small>
+  <label>Ukuran</label>
+  <select id="ukuran" onchange="hitungTotal()">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="manual">Lain-lain (Manual)</option>
+  </select>
 
-      <label>Jumlah</label>
-      <input
-        type="number"
-        id="jumlah"
-        value="1"
-        min="1"
-        onchange="hitungTotal()"
-      />
+  <input type="text" id="ukuranManual"
+         placeholder="Contoh: XXXXXL"
+         oninput="hitungTotal()">
 
-      <label>Metode Pembayaran</label>
-      <select id="pembayaran" onchange="hitungTotal()">
-        <option value="COD">COD (Bayar di Tempat)</option>
-        <option value="Transfer BCA">Transfer BCA</option>
-        <option value="Transfer BRI">Transfer BRI</option>
-        <option value="Dana">Dana</option>
-      </select>
+  <small>* Ukuran manual: setiap 1 huruf <b>X</b> = +Rp 5.000</small>
 
-      <div class="payment-info" id="paymentInfo"></div>
+  <label>Jumlah</label>
+  <input type="number" id="jumlah" value="1" min="1" onchange="hitungTotal()">
 
-      <div class="summary">
-        <h2>Ringkasan Pesanan</h2>
-        <p id="ringkasan"></p>
-        <div class="total" id="totalHarga">Total: Rp 0</div>
-      </div>
+  <label>Metode Pembayaran</label>
+  <select id="pembayaran" onchange="hitungTotal()">
+    <option value="COD">COD (Bayar di Tempat)</option>
+    <option value="Transfer BCA">Transfer BCA</option>
+    <option value="Transfer BRI">Transfer BRI</option>
+    <option value="Dana">Dana</option>
+  </select>
 
-      <button onclick="kirimWA()">Kirim Pesanan via WhatsApp</button>
+  <div class="payment-info" id="paymentInfo"></div>
 
-      <div class="footer">© Bali Bonex</div>
-    </div>
+  <div class="summary">
+    <h2>Ringkasan Pesanan</h2>
+    <pre id="ringkasan"></pre>
+    <div class="total" id="totalHarga">Total: Rp 0</div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <button onclick="kirimWA()">Kirim Pesanan via WhatsApp</button>
+
+  <div class="footer">© Bali Bonex</div>
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>
