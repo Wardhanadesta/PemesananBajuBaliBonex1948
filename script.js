@@ -1,55 +1,71 @@
-document.addEventListener("DOMContentLoaded", function () {
-  hitungTotal();
-});
-
 function hitungTotal() {
-  const jenisEl = document.getElementById("jenis");
-  const jumlahEl = document.getElementById("jumlah");
-  const ukuranEl = document.getElementById("ukuran");
+  const jenis = document.getElementById("jenis");
+  const jumlah = document.getElementById("jumlah");
+  const ukuran = document.getElementById("ukuran").value;
+  const ukuranManual = document.getElementById("ukuranManual").value.trim();
+  const pembayaran = document.getElementById("pembayaran").value;
 
-  if (!jenisEl || !jumlahEl || !ukuranEl) return;
+  let harga = parseInt(jenis.value);
+  let qty = parseInt(jumlah.value);
 
-  let harga = parseInt(jenisEl.value) || 0;
-  let jumlah = parseInt(jumlahEl.value) || 1;
-  let ukuran = ukuranEl.value || "";
-
-  // Tambahan ukuran custom
-  if (ukuran === "Lain-lain (+5K)") {
+  if (ukuranManual !== "") {
     harga += 5000;
   }
 
-  let total = harga * jumlah;
+  let total = harga * qty;
 
   document.getElementById("totalHarga").innerText =
     "Total: Rp " + total.toLocaleString("id-ID");
 
   document.getElementById("ringkasan").innerText =
-    `Harga satuan: Rp ${harga.toLocaleString("id-ID")} x ${jumlah}`;
+    `Ukuran: ${ukuranManual !== "" ? ukuranManual : ukuran}
+Harga: Rp ${harga.toLocaleString()} x ${qty}
+Pembayaran: ${pembayaran}`;
+
+  const info = document.getElementById("paymentInfo");
+
+  if (pembayaran === "Transfer BCA") {
+    info.innerText = "Transfer ke BCA (VIA WA)";
+  } else if (pembayaran === "Transfer BRI") {
+    info.innerText = "Transfer ke BRI (VIA WA)";
+  } else if (pembayaran === "Dana") {
+    info.innerText = "Dana: 0821-6235-0017";
+  } else {
+    info.innerText = "Pembayaran dilakukan saat barang diterima (COD)";
+  }
 }
 
 function kirimWA() {
-  const nama = document.getElementById("nama").value.trim();
-  const alamat = document.getElementById("alamat").value.trim();
-  const jenis = document.getElementById("jenis").selectedOptions[0].text;
-  const ukuran = document.getElementById("ukuran").value;
-  const jumlah = document.getElementById("jumlah").value;
-  const total = document.getElementById("totalHarga").innerText;
+  const nama = document.getElementById("nama").value;
+  const alamat = document.getElementById("alamat").value;
 
   if (!nama || !alamat) {
-    alert("Nama dan alamat wajib diisi!");
+    alert("Nama dan alamat wajib diisi");
     return;
   }
 
-  let pesan =
-    `PESANAN BAJU BALI BONEX\n\n` +
-    `Nama: ${nama}\n` +
-    `Alamat: ${alamat}\n` +
-    `Jenis: ${jenis}\n` +
-    `Ukuran: ${ukuran}\n` +
-    `Jumlah: ${jumlah}\n` +
-    `${total}`;
+  const jenis = document.getElementById("jenis").selectedOptions[0].text;
+  const ukuran = document.getElementById("ukuran").value;
+  const ukuranManual = document.getElementById("ukuranManual").value.trim();
+  const jumlah = document.getElementById("jumlah").value;
+  const pembayaran = document.getElementById("pembayaran").value;
+  const total = document.getElementById("totalHarga").innerText;
 
-  const url = "https://wa.me/6282162350017?text=" + encodeURIComponent(pesan);
+  const ukuranFinal = ukuranManual !== "" ? ukuranManual : ukuran;
 
-  window.open(url, "_blank");
+  const pesan = `PESANAN BAJU
+Nama: ${nama}
+Alamat: ${alamat}
+Jenis: ${jenis}
+Ukuran: ${ukuranFinal}
+Jumlah: ${jumlah}
+Pembayaran: ${pembayaran}
+${total}`;
+
+  window.open(
+    "https://wa.me/6282162350017?text=" + encodeURIComponent(pesan),
+    "_blank",
+  );
 }
+
+hitungTotal();
