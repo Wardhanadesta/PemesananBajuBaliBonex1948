@@ -1,33 +1,26 @@
-/* RESET DASAR */
 * {
   box-sizing: border-box;
 }
 
-/* BODY */
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+  background: linear-gradient(135deg, #222, #444);
   min-height: 100vh;
 }
 
-/* CONTAINER */
 .container {
   max-width: 900px;
   margin: 20px auto;
-  background: #ffffff;
+  background: #fff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* JUDUL */
 h1 {
   text-align: center;
-  margin-bottom: 20px;
 }
 
-/* GAMBAR */
 .images {
   display: flex;
   flex-wrap: wrap;
@@ -43,7 +36,6 @@ h1 {
   border: 1px solid #ccc;
 }
 
-/* FORM */
 label {
   font-weight: bold;
   display: block;
@@ -58,20 +50,18 @@ textarea {
   margin-top: 5px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 14px;
 }
 
 textarea {
   resize: vertical;
 }
 
-/* TOMBOL */
 button {
   width: 100%;
-  margin-top: 18px;
+  margin-top: 15px;
   padding: 12px;
-  background-color: #25d366;
-  color: #ffffff;
+  background: #25d366;
+  color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -79,43 +69,33 @@ button {
 }
 
 button:hover {
-  background-color: #1ebe5b;
+  background: #1ebe5b;
 }
 
-/* RINGKASAN */
 .summary {
-  margin-top: 18px;
+  margin-top: 15px;
   padding: 12px;
-  border: 1px dashed #999;
-  border-radius: 6px;
-  background-color: #f9f9f9;
+  border: 1px dashed #aaa;
+  background: #f9f9f9;
 }
 
 .total {
   font-weight: bold;
   color: #d60000;
   text-align: right;
-  margin-top: 8px;
 }
 
-/* TEKS KECIL */
-small {
-  color: #555;
-  font-size: 12px;
-}
-
-/* SEMBUNYI */
 .hidden {
   display: none;
 }
 
-/* RESPONSIVE */
+small {
+  font-size: 12px;
+  color: #555;
+}
+
 @media (max-width: 600px) {
   .images img {
     width: 100%;
-  }
-
-  h1 {
-    font-size: 20px;
   }
 }
