@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Pemesanan Baju Bali Bonex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -10,16 +11,16 @@
       <h1>Pemesanan Baju Bali Bonex</h1>
 
       <div class="images">
-        <img src="img/desain1.jpg" />
-        <img src="img/desain2.jpg" />
-        <img src="img/size-dewasa.jpg" />
-        <img src="img/size-anak.jpg" />
+        <img src="desain1.jpg" alt="Desain Baju 1" />
+        <img src="desain2.jpg" alt="Desain Baju 2" />
+        <img src="size-dewasa.jpg" alt="Size Chart Dewasa" />
+        <img src="size-anak.jpg" alt="Size Chart Anak" />
       </div>
 
-      <label>Nama</label>
+      <label>Nama Lengkap</label>
       <input type="text" id="nama" />
 
-      <label>Alamat</label>
+      <label>Alamat Lengkap</label>
       <textarea id="alamat"></textarea>
 
       <label>Jenis Baju</label>
@@ -46,12 +47,13 @@
       </select>
 
       <div id="manualBox" class="hidden">
-        <label>Isi Ukuran Manual (contoh: XXXXXL)</label>
+        <label>Isi Ukuran Manual (contoh: XXXXL)</label>
         <input type="text" id="ukuranManual" oninput="hitungTotal()" />
         <small
           >Setiap tambahan 1 huruf "X" di atas XL = +Rp5.000 note: harap
-          menggunakan huruf Kapital untuk penulisan ukuran XXL(benar) xxl(salah)
-        </small>
+          menggunakan huruf KAPITAL contohnya xxl(salah) sedangkan
+          XXL(benar)</small
+        >
       </div>
 
       <label>Jumlah</label>
@@ -72,12 +74,12 @@
       <p id="paymentInfo"></p>
 
       <div class="summary">
-        <h3>Ringkasan</h3>
+        <h3>Ringkasan Pesanan</h3>
         <p id="ringkasan"></p>
         <div id="total" class="total"></div>
       </div>
 
-      <button onclick="kirimWA()">Pesan via WhatsApp</button>
+      <button onclick="kirimWA()">Kirim Pesanan via WhatsApp</button>
     </div>
 
     <script src="script.js"></script>
