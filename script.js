@@ -34,7 +34,7 @@ function hitungTotal() {
 
   document.getElementById("paymentInfo").innerText =
     pembayaran === "DANA"
-      ? "Pembayaran DANA: 0821-6235-0017 (I Putu Sandhika Desta Wardahana)"
+      ? "Pembayaran DANA: 0821-6235-0017 (I Putu Sandhika Desta Wardahana) Lampirkan bukti pembayaran (via wa)"
       : "Pembayaran COD (Bayar di tempat)";
 }
 
